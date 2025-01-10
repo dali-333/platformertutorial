@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlldv0p06wgkt"]
+
+[ext_resource type="Script" path="res://Characters/character.gd" id="1_vhwd8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bomu3"]
+
+[node name="Character" type="Node2D"]
+script = ExtResource("1_vhwd8")
+
+[node name="PlayerBody" type="CharacterBody2D" parent="."]
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="PlayerBody"]
+shape = SubResource("RectangleShape2D_bomu3")
