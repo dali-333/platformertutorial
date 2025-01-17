@@ -6,7 +6,8 @@ const JUMP_VELOCITY = -320.0
 
 @onready var animation = $AnimatedSprite2D
 
-
+func _ready() -> void:
+	animation.play("idle")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

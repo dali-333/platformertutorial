@@ -288,14 +288,13 @@ radius = 5.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
+collision_layer = 2
 script = ExtResource("1_5ytg3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_y2i3e")
-animation = &"dead"
-frame = 3
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)

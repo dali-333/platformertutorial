@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctisvkju7bkbm"]
+
+[ext_resource type="Script" path="res://ennemies/slime.gd" id="1_2mi0e"]
+[ext_resource type="Texture2D" uid="uid://chx4f3ywqhfgj" path="res://assets/sprites/slime_green.png" id="2_d6031"]
+[ext_resource type="PackedScene" uid="uid://85konvpocpdb" path="res://map_elements/kill_zone.tscn" id="3_x7xqc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asmbn"]
+atlas = ExtResource("2_d6031")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj7sr"]
+atlas = ExtResource("2_d6031")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oosl7"]
+atlas = ExtResource("2_d6031")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_768bm"]
+atlas = ExtResource("2_d6031")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwo0s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asmbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj7sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oosl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_768bm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhsil"]
+size = Vector2(10, 12)
+
+[node name="Slime" type="Node2D"]
+position = Vector2(0, -12)
+script = ExtResource("1_2mi0e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dwo0s")
+
+[node name="KillZone" parent="." instance=ExtResource("3_x7xqc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_dhsil")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(13, 1)
+collide_with_areas = true
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-12, 0)
+collide_with_areas = true
